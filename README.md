@@ -49,7 +49,7 @@
    运行以下命令安装所需依赖包：
 
    ```bash
-   pip install requests pillow tkinter
+   pip install -r requirements.txt
    ```
 
 5. **运行GUI程序**：  

@@ -9,3 +9,5 @@ pyflakes==2.2.0
 requests==2.25.1
 toml==0.10.2
 urllib3==1.26.2
+thinker==1.1.1
+pillow==11.1.0

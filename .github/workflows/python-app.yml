@@ -14,24 +14,27 @@ permissions:
   contents: write
 
 jobs:
-  monitor:
+  build:
     runs-on: ubuntu-latest
+    env:
+      WXPUSHER_UID: ${{ secrets.WX_UIDS }}  # 注入 Secrets 到环境变量
+      WXPUSHER_TOKEN: ${{ secrets.APPTOKEN }}
     steps:
+      # 使用到的actions包(用于克隆当前仓库的所有代码)
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
         with:
-          python-version: '3.9.7' # 指定 Python 版本
-
+          ref: main
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
       - name: Install dependencies
-        run: pip install requests
-
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          # if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run flight monitor script
-        env:
-            WXPUSHER_UID: ${{ secrets.WX_UIDS }}  # 注入 Secrets 到环境变量
-            WXPUSHER_TOKEN: ${{ secrets.APPTOKEN }}
         run: python flight_alert.py # 替换为你的脚本文件名
 
       - name: 列出所有文件

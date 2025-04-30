@@ -2,8 +2,8 @@
     "dateToGo": [
         "20250519"
     ],
-    "placeFrom": "WUH",
-    "placeTo": "KWE",
+    "placeFrom": "KWE",
+    "placeTo": "WUH",
     "flightWay": "Oneway",
     "sleepTime": 600,
     "priceStep": 50,
